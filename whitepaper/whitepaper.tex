@@ -1,0 +1,54 @@
+\makeatletter
+\def\input@path{{../cls/}}
+\makeatother
+
+\documentclass[a4paper]{gatsby}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagecolor{DarkestGrey}
+\afterpage{\nopagecolor}
+\null
+
+\begin{figure}
+  \centering
+  \color{FontInverted}
+  \def\svgwidth{\columnwidth}
+
+  \vspace{4cm}
+  \scalebox{0.9}{\input{gatsby-title.pdf_tex}}
+
+  \vspace{2cm}
+  \Huge\scshape
+  Perfecting Online Entertainment
+
+  \vspace{2cm}
+  \LARGE\scshape
+  Creators\quad |\quad Viewers\quad |\quad Sponsors
+\end{figure}
+
+\clearpage\pagebreak
+\setcounter{page}{1}
+\color{FontBody}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage\pagebreak
+
+\section{Abstract}
+\input{abstract}
+
+\section{Architecture}
+\input{architecture}
+
+\section{Monetization}
+\input{monetization}
+
+\section{Content Discovery}
+\input{discovery}
+
+\section{Roadmap}
+\input{roadmap}
+
+\end{document}
