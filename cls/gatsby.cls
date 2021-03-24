@@ -17,7 +17,17 @@
 \RequirePackage{graphicx}
 \RequirePackage{pifont}
 \RequirePackage{tikz}
+\RequirePackage{multicol}
 \RequirePackage{lipsum}
+
+\usetikzlibrary{calc, arrows, decorations.markings}
+
+\tikzset{pointer/.style={
+  line cap=round,
+  line width=3pt,
+  shorten >=2mm,
+  decoration={markings,mark=at position 1 with {\arrow[scale=2,>=stealth]{>}}},
+  postaction={decorate}}}
 
 \newif\if@presentation
 
@@ -30,6 +40,7 @@
 
 \if@presentation\geometry{paperwidth=14.7in,paperheight=8.27in}\fi
 \if@presentation\pagestyle{empty}\fi
+\if@presentation\parskip=1cm\fi
 
 \hypersetup{
   colorlinks=true,
@@ -42,6 +53,7 @@
 
 \definecolor{Gold}{HTML}{B29B5C}
 \definecolor{LightGold}{rgb}{0.83, 0.69, 0.22}
+\definecolor{Silver}{HTML}{B9B9B9}
 \definecolor{DarkestGrey}{HTML}{141414}
 \definecolor{DarkerGrey}{HTML}{1a1a1a}
 \definecolor{DarkGrey}{HTML}{202020}
@@ -76,6 +88,8 @@
 \titleformat{\section}{\sbseries\if@presentation\HUGE\else\huge\fi}{}{0pt}{}
 \titleformat{\subsection}{\scshape\LARGE}{\unless\if@presentation\thesubsection.\fi}{0.5ex}{}
 \titleformat{\subsubsection}{\sbseries\large}{}{0pt}{}
+
+\newcommand{\svg}[2]{\def\svgwidth{#1}\scalebox{1}{\input{#2.pdf_tex}}}
 
 \newcommand{\comment}[1]{}
 \newcommand{\notopskip}{\null\vspace*{-\headsep}\vspace*{-\topskip}}
