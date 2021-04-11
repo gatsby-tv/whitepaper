@@ -1,0 +1,65 @@
+\documentclass{standalone}
+
+\begin{document}
+
+\color{FontBody}
+
+\section{Peer-to-Peer File Distribution}
+\subsection*{Bandwidth Solution}
+
+\begin{tikzoverlay}
+  \def\hsep{5cm}
+
+  \coordinate[below = 5mm of current page.center] (center);
+  \node[left = \hsep of center] (node1) {\svg{3cm}{browser}};
+  \node[above right = 1cm and \hsep of center] (node2) {\svg{3cm}{browser}};
+  \node[below right = 1cm and \hsep of center] (node3) {\svg{3cm}{browser}};
+
+  \draw[pointer] ($(node1.east) + (5mm, 0)$) -- ($(node2.west) - (3mm, 0)$);
+  \draw[pointer] ($(node1.east) + (5mm, 0)$) -- ($(node3.west) - (3mm, 0)$);
+
+  \node[below = 1cm of node1] {
+    \textblock{10cm}{
+      Use \href{https://webrtc.org}{WebRTC} + \href{https://ipfs.io}{IPFS} to
+      allow browsers to operate as nodes in a peer-to-peer network
+    }
+  };
+
+  \node[below = 1cm of node3] {
+    \textblock{10cm}{
+      As a user streams a video, they simultaneously help stream it to other
+      peers on the network
+    }
+  };
+\end{tikzoverlay}
+
+\clearpage\pagebreak
+
+\section*{Peer-to-Peer File Distribution}
+\subsection*{Storage Solution}
+
+\begin{tikzoverlay}
+  \def\hsep{5cm}
+
+  \coordinate[below = 5mm of current page.center] (center);
+  \node[left = \hsep of center] (creator) {\svg{3cm}{creator}};
+  \node[right = \hsep of center] (browser) {\svg{3cm}{browser}};
+
+  \draw[pointer,loosely dashed] ($(creator.east) + (5mm, 0)$) -- ($(browser.west) - (3mm, 0)$);
+
+  \node[below = 1cm of creator] {
+    \textblock{10cm}{
+      Our studio app will help creators organize/backup their content and
+      share footage with editors...
+    }
+  };
+
+  \node[below = 1cm of browser] {
+    \textblock{10cm}{
+      As well as occasionally contribute blocks of videos when they are
+      missing on the peer-to-peer network
+    }
+  };
+\end{tikzoverlay}
+
+\end{document}

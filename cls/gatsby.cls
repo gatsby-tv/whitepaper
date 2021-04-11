@@ -18,15 +18,16 @@
 \RequirePackage{pifont}
 \RequirePackage{tikz}
 \RequirePackage{multicol}
+\RequirePackage{soul}
 \RequirePackage{lipsum}
 
-\usetikzlibrary{calc, arrows, decorations.markings}
+\usetikzlibrary{calc,arrows,decorations.markings,positioning}
 
 \tikzset{pointer/.style={
   line cap=round,
   line width=3pt,
   shorten >=2mm,
-  decoration={markings,mark=at position 1 with {\arrow[scale=2,>=stealth]{>}}},
+  decoration={markings,mark=at position 0.99 with {\arrow[scale=2,>=stealth]{>}}},
   postaction={decorate}}}
 
 \newif\if@presentation
@@ -41,6 +42,7 @@
 \if@presentation\geometry{paperwidth=14.7in,paperheight=8.27in}\fi
 \if@presentation\pagestyle{empty}\fi
 \if@presentation\parskip=1cm\fi
+\if@presentation\renewcommand{\thefootnote}{\fnsymbol{footnote}}\fi
 
 \hypersetup{
   colorlinks=true,
@@ -76,12 +78,17 @@
 ]
 
 \DeclareRobustCommand{\HUGE}{\fontsize{42pt}{42pt}\selectfont}
+\DeclareRobustCommand{\mega}{\fontsize{64pt}{64pt}\selectfont}
+\DeclareRobustCommand{\Mega}{\fontsize{72pt}{72pt}\selectfont}
+\DeclareRobustCommand{\MEGA}{\fontsize{96pt}{96pt}\selectfont}
 \DeclareRobustCommand{\ulseries}{\fontseries{ul}\selectfont}
 \DeclareRobustCommand{\elseries}{\fontseries{el}\selectfont}
 \DeclareRobustCommand{\lseries}{\fontseries{l}\selectfont}
 \DeclareRobustCommand{\sbseries}{\fontseries{sb}\selectfont}
 \DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
 \DeclareRobustCommand{\xbseries}{\fontseries{xb}\selectfont}
+
+\setuldepth{y}
 
 \renewcommand{\thesubsection}{\Alph{subsection}}
 
@@ -90,6 +97,7 @@
 \titleformat{\subsubsection}{\sbseries\large}{}{0pt}{}
 
 \newcommand{\svg}[2]{\def\svgwidth{#1}\scalebox{1}{\input{#2.pdf_tex}}}
+\newcommand{\png}[2]{\includegraphics[width=#1]{#2}}
 
 \newcommand{\comment}[1]{}
 \newcommand{\notopskip}{\null\vspace*{-\headsep}\vspace*{-\topskip}}
@@ -97,5 +105,36 @@
 \newcommand{\pageimage}[3]{
   \tikz[remember picture,overlay]
   \node[#3,inner sep=0pt,outer sep=0pt] at (current page.#2)
-  {\includegraphics[width=\paperwidth,height=\paperheight]{#1}};
+  {\png{\paperwidth}{#1}};
 }
+
+\newcommand{\textblock}[2]{
+  \begin{minipage}[t]{#1}
+    \centering
+    #2
+  \end{minipage}
+}
+
+\newenvironment{tikzfigure}[1][]
+{
+  \begin{figure}[hbt!]
+    \LARGE
+    \begin{tikzpicture}[#1]
+}
+{
+    \end{tikzpicture}
+  \end{figure}
+}
+
+\newenvironment{tikzoverlay}[1][]
+{
+  \begin{figure}[hbt!]
+    \LARGE
+    \begin{tikzpicture}[remember picture,overlay,#1]
+}
+{
+    \end{tikzpicture}
+  \end{figure}
+}
+
+\renewenvironment{vcenter}{\vspace*{\fill}}{\vspace*{\fill}}

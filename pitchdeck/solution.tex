@@ -7,42 +7,33 @@
 
 \section{Solution}
 
-\vspace*{\fill}
+\begin{tikzoverlay}[
+    item/.style={draw,circle,fill=white,minimum size=4.5cm},
+  ]
+  \def\margin{6cm}
 
-\begin{figure}[hb]
-  \centering
-  \LARGE
+  \node[item] (dollar) at (current page.center) {\svg{1.6cm}{dollar}};
+  \node[item,right = \margin of current page.west] (globe) {\svg{3cm}{globe}};
+  \node[item,left = \margin of current page.east] (video) {\svg{2.6cm}{video}};
 
-  \def\hsep{10cm}
+  \node[below = 3cm of globe.center] {
+    \textblock{9.5cm}{
+      Use Peer-to-Peer File Distribution
+      to eliminate hosting costs
+    }
+  };
 
-  \begin{tikzpicture}
-    \draw[Silver,fill] (-\hsep, 0) circle[radius=2.25cm] node {\svg{3cm}{globe}};
-    \node at (-\hsep, -4.15cm) {
-      \begin{minipage}[t]{9.5cm}
-        \centering
-        Use Peer-to-Peer File Distribution
-        to eliminate hosting costs
-      \end{minipage}
-    };
+  \node[below = 3cm of dollar.center] {
+    \textblock{9cm}{
+      Monetize using sponsorships, not advertising
+    }
+  };
 
-    \draw[Silver,fill] (0, 0) circle[radius=2.25cm] node {\svg{1.6cm}{dollar}};
-    \node at (0, -3.75cm) {
-      \begin{minipage}[t]{9cm}
-        \centering
-        Monetize using sponsorships, not advertisers
-      \end{minipage}
-    };
-
-    \draw[Silver,fill] (\hsep, 0) circle[radius=2.25cm] node {\svg{2.6cm}{video}};
-    \node at (\hsep, -3.75cm) {
-      \begin{minipage}[t]{9cm}
-        \centering
-        Add creator focused features and collaboration tools
-      \end{minipage}
-    };
-  \end{tikzpicture}
-\end{figure}
-
-\vspace*{\fill}
+  \node[below = 3cm of video.center] {
+    \textblock{9cm}{
+      Add creator focused features and collaboration tools
+    }
+  };
+\end{tikzoverlay}
 
 \end{document}
