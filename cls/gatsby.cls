@@ -104,8 +104,8 @@
 \newcommand{\thispagecolor}[1]{\pagecolor{#1}\afterpage{\nopagecolor}}
 \newcommand{\pageimage}[3]{
   \tikz[remember picture,overlay]
-  \node[#3,inner sep=0pt,outer sep=0pt] at (current page.#2)
-  {\png{\paperwidth}{#1}};
+  \node[#1,inner sep=0pt,outer sep=0pt] at (current page.#2)
+  {\png{\paperwidth}{#3}};
 }
 
 \newcommand{\textblock}[2]{
