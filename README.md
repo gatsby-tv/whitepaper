@@ -1,4 +1,4 @@
-# Gatsby's Whitepaper and Pitch Deck
+# Gatsby's Whitepaper
 
 This repository is dedicated to the continual, collaborative documents cementing
 the official plans, operations, and achievements of GatsbyTV. Our intention is
