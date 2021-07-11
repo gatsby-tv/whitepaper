@@ -5,6 +5,9 @@ the official plans, operations, and achievements of GatsbyTV. Our intention is
 to use this repository as a hub for discussions and for tracking updates made to
 the documents themselves.
 
+Note: The whitepaper is _incomplete_. For the high level overview of the
+project [see the about page](https://gatsby.sh/p/about).
+
 ## Compilation
 
 Both documents are written using LuaLaTeX which can be installed through
